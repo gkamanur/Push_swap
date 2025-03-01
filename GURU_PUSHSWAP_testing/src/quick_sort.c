@@ -6,7 +6,7 @@
 /*   By: gkamanur <gkamanur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 14:38:33 by decortejohn       #+#    #+#             */
-/*   Updated: 2025/02/25 16:29:23 by gkamanur         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:45:22 by gkamanur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	begin_sorting(t_list **stack1, t_list **stack2, t_push *push, int count)
 	int	i;
 
 	i = -1;
+	printf(COLOR_CYAN "Starting begin_sort ::min=%i: max=%i: mid=%i: flag=%i\n" COLOR_OFF,push->next,push->max,push->mid,push->flag);
 	while (++i < count)
 	{
 		if ((*stack1)->index <= push->mid)
@@ -84,7 +85,7 @@ void	quick_a(t_list **stack1, t_list **stack2, t_push *push)
 		}
 		else if ((*stack2)->index >= push->mid)
 		{
-			// (*stack2)->flag = push->flag;
+			(*stack2)->flag = push->flag;
 			pa(stack1, stack2);
 		}
 		else if ((*stack2)->index < push->mid)
@@ -106,28 +107,6 @@ void	quick_b(t_list **stack1, t_list **stack2, t_push *push)
 	now_flag = (*stack1)->flag;
 	printf(COLOR_BOLD_BLUE "\nFunction quick_b, now_flag=%i\n" COLOR_OFF,now_flag);
 	printf("startting Quick_b ::min=%i: max=%i: mid=%i: flag=%i\n",push->next,push->max,push->mid,push->flag);
-	// if ((*stack1)->flag != 0)
-	// {
-	// 	while ((*stack1)->flag == now_flag)
-	// 	{
-	// 		if ((*stack1)->index != push->next)
-	// 		{
-	// 			pb(stack1, stack2);
-	// 		}
-	// 		find_next(stack1, stack2, push);
-	// 	}
-	// }
-	// else if ((*stack1)->flag == 0)
-	// {
-	// 	while ((*stack1)->flag != -1)
-	// 	{
-	// 		if ((*stack1)->index != push->next)
-	// 		{
-	// 			pb(stack1, stack2);
-	// 		}
-	// 		find_next(stack1, stack2, push);
-	// 	}
-	// }
 	printf("Before-----stack_flag:%i   now_flag:%i\n", (*stack1)->flag, now_flag);
 	while ((*stack1)->flag == now_flag)
 	{
