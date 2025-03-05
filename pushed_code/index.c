@@ -6,7 +6,7 @@
 /*   By: gkamanur <gkamanur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:00:35 by decortejohn       #+#    #+#             */
-/*   Updated: 2025/02/27 11:46:08 by gkamanur         ###   ########.fr       */
+/*   Updated: 2025/03/04 08:57:34 by gkamanur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ void	index_replace(t_list *lst, int n, int to)
 	t_list	*tmp;
 
 	tmp = lst;
-	while (tmp)
+	while (tmp != NULL)
 	{
 		if (tmp->index == -1 && tmp->content == n)
-			break ;
+		{
+			tmp->index = to;
+			return ;
+		}
 		tmp = tmp->next;
 	}
-	tmp->index = to;
 }
 
 int	min_nbr(t_list *lst)

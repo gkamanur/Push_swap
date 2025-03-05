@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gkamanur <gkamanur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:53:30 by decortejohn       #+#    #+#             */
-/*   Updated: 2022/02/27 16:41:19 by jdecorte         ###   ########.fr       */
+/*   Updated: 2025/03/04 08:56:57 by gkamanur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ t_list	*find_max_lst(t_list **stack)
 	return (max);
 }
 
-int	isrevsorted(t_swap	*tab)
+int	isrevsorted(t_list *stack_a)
 {
 	t_list	*tmp;
 
-	tmp = tab->stack_a;
-	while (tmp->next)
+	tmp = stack_a;
+	while (tmp && tmp->next)
 	{
 		if (tmp->content < tmp->next->content)
 			return (0);

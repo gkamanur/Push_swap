@@ -16,6 +16,8 @@ SRCS = 	main.c\
 		sort_handler.c\
 		sort_utils.c\
 		free_stack.c\
+		parse.c\
+		error_free.c\
 		libft/*.c
 
 $(NAME) :

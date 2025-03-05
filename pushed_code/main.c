@@ -6,22 +6,24 @@
 /*   By: gkamanur <gkamanur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:23:48 by decortejohn       #+#    #+#             */
-/*   Updated: 2025/02/27 13:50:02 by gkamanur         ###   ########.fr       */
+/*   Updated: 2025/03/04 09:05:04 by gkamanur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+#include <stdbool.h>
+#include <stdio.h>
 
-// void	print_stack(t_list *stack, char *name)
-// {
-// 	printf("%s: ", name);
-// 	while (stack)
-// 	{
-// 		printf("[%li] ", stack->content);
-// 		stack = stack->next;
-// 	}
-// 	printf("\n");
-// }
+void	print_stack(t_list *stack, char *name)
+{
+	printf("%s: ", name);
+	while (stack)
+	{
+		printf("[%li, %i, %i] ", stack->content, stack->index, stack->flag);
+		stack = stack->next;
+	}
+	printf("\n");
+}
 
 int	ft_check(t_list *lst, int n, char *nbr)
 {
@@ -89,38 +91,23 @@ void	split(int ac, char **ag, char ***args, int *free_args)
 	}
 }
 
-void	check_stacks(t_swap **tab, int *free_args, char ***args)
-{
-	if ((*tab)->stack_a == NULL)
-	{
-		if (*free_args)
-			free_args_array(*args);
-		free(*tab);
-		return ;
-	}
-	(*tab)->stack_b = NULL;
-}
-
 int	main(int ac, char **ag)
 {
-	t_swap	*tab;
+	t_list	*stack_a;
+	t_list	*stack_b;
 	char	**args;
-	int		free_args;
 
-	if (ac == 1)
-		return (0);
-	tab = malloc(sizeof(t_swap));
-	if (!tab)
-		return (-1);
-	split(ac, ag, &args, &free_args);
-	tab->stack_a = ft_init(args, ac);
-	check_stacks(&tab, &free_args, &args);
-	tab->asize = ft_lstsize(tab->stack_a);
-	tab->bsize = ft_lstsize(tab->stack_b);
-	add_index(tab->stack_a);
-	check_sort(tab);
-	free_swap(tab);
-	if (free_args)
-		free_args_array(args);
+	stack_a = NULL;
+	stack_b = NULL;
+	if (ac == 1 || (ac == 2 && !ag[1][0]))
+		return (1);
+	if (ac == 2)
+		args = ft_split(ag[1], ' ');
+	else
+		args = ag + 1;
+	stack_init(&stack_a, args, ac);
+	check_sort(&stack_a, &stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

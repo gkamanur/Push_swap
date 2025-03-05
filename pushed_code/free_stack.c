@@ -6,7 +6,7 @@
 /*   By: gkamanur <gkamanur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:32:23 by gkamanur          #+#    #+#             */
-/*   Updated: 2025/02/27 13:36:52 by gkamanur         ###   ########.fr       */
+/*   Updated: 2025/03/04 08:54:23 by gkamanur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@ void	free_list(t_list *head)
 		head = head->next;
 		free(tmp);
 	}
-}
-
-void	free_swap(t_swap *swap)
-{
-	if (swap == NULL)
-		return ;
-	if (swap->stack_a != NULL)
-		free_list(swap->stack_a);
-	if (swap->stack_b != NULL)
-		free_list(swap->stack_b);
-	free(swap);
 }
 
 void	free_args_array(char **args)
