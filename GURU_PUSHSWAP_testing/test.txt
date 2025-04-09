@@ -1,9 +1,0 @@
-Sorting Strategy Breakdown:
-Stack Order Before	Operation Applied	Final Order
-[3, 2, 1] (Reverse Sorted)	sa, rra	[1, 2, 3]
-[2, 1, 3]	sa	[1, 2, 3]
-[3, 1, 2]	ra	[1, 2, 3]
-[1, 3, 2]	sa, ra	[1, 2, 3]
-[2, 3, 1]	rra	[1, 2, 3]
-
-
